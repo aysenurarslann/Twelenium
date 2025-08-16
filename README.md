@@ -1,40 +1,33 @@
-# 🐦 Selenium-Based Twitter Scraper
+# Twelenium |Twitter Data Collector
 
-This project is a tweet scraping tool built with Python and Selenium. It collects tweets containing specific keywords over a given date range and stores them in a local database and JSON format. The script is designed to work without the official Twitter API by mimicking user behavior via browser automation.
+A Python-based web scraper built with Selenium to collect public Twitter data for academic and research purposes.
 
-> ⚠️ Note: This project uses [X (formerly Twitter)](https://x.com) web search and may be affected by changes to the site's structure or anti-bot mechanisms.
+## 🎯 Purpose
+- Collect tweets by keyword, date range, or user.
+- Extract text content, likes, retweets, timestamps, and author info.
+- Store results in structured formats: `SQLite` and `JSON`.
+- Designed for **non-commercial, ethical research only**.
 
----
+## ⚠️ Important Notes
+- This tool does **not** collect private or sensitive user data.
+- Respects `robots.txt` and avoids aggressive scraping.
+- Uses delays between requests to prevent rate-limiting.
+- Not intended for commercial use or mass data harvesting.
 
-## 📌 Features
+## 🛠️ Technologies Used
+- Python
+- Selenium
+- BeautifulSoup (optional)
+- SQLite / JSON
+- Pandas (for analysis)
 
-- Keyword-based tweet collection
-- Date-range filtering (day-by-day iteration)
-- Turkish language support by default
-- Extracts:
-  - Tweet content
-  - Timestamp (converted to Turkish time)
-  - Username
-  - Tweet URL and ID
-  - Hashtags
-  - Likes, retweets, comments
-  - Image URLs (excluding profile pictures)
-- Stores tweets in:
-  - Local SQLite-like database
-  - JSON export
-- Skips and logs days with no tweet results
-- Selenium automation with a persistent Chrome user profile
-
----
-
-
----
-
-## 🚀 Usage
-
-### ▶️ Run the script:
-
-```bash
-python main.py -s 2024-03-01 -e 2024-03-05 -l tr
-
-
+## 📂 Sample Output
+```json
+{
+  "tweet_id": "123456789",
+  "text": "Great day at the university!",
+  "likes": 12,
+  "retweets": 3,
+  "timestamp": "2024-07-15T14:30:00Z",
+  "author": "@user123"
+}
