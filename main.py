@@ -3,7 +3,7 @@ import datetime
 from collector import Collector
 from tweetDB import TweetDB
 
-keywords = ['"İstanbul Sözleşmesi"']
+keywords = ['"your keywords"']
 
 search_query = " OR ".join(f'"{keyword}"' for keyword in keywords)
 
