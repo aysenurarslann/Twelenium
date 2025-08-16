@@ -2,11 +2,23 @@ import argparse
 import datetime
 from collector import Collector
 from tweetDB import TweetDB
+from prompt_safety import validate_search_query  # ← Buraya ekledik
 
-keywords = ['"your keywords"']
+#  Anahtar kelimeleri burada tanımla (veya dışarıdan al)
+keywords = ['kadın hakları', 'sosyal medya']  
 
+#  Önce bu anahtar kelimeleri doğrula!
+try:
+    for keyword in keywords:
+        validate_search_query(keyword)
+except ValueError as e:
+    print(f" Güvenlik hatası: {e}")
+    exit(1)
+
+# Arama sorgusunu oluştur
 search_query = " OR ".join(f'"{keyword}"' for keyword in keywords)
 
+# Komut satırı argümanları
 argv_parser = argparse.ArgumentParser()
 argv_parser.add_argument('-s', '--start_date', type=str, required=True, help="Başlangıç tarihi YYYY-MM-DD")
 argv_parser.add_argument('-e', '--end_date', type=str, required=True, help="Bitiş tarihi YYYY-MM-DD")
